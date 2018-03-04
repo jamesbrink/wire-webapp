@@ -32,19 +32,19 @@ z.util.URLUtil = (() => {
   };
 
   const _get_domain = url_type => {
-    const is_production = _is_production_backend();
+    const isProduction = _is_production_backend();
 
     switch (url_type) {
       case TYPE.ACCOUNT:
-        return is_production ? z.config.URL.ACCOUNT.PRODUCTION : z.config.URL.ACCOUNT.STAGING;
+        return isProduction ? z.config.URL.ACCOUNT.PRODUCTION : z.config.URL.ACCOUNT.STAGING;
       case TYPE.SUPPORT:
         return z.config.URL.SUPPORT;
       case TYPE.TEAM_SETTINGS:
-        return is_production ? z.config.URL.TEAM_SETTINGS.PRODUCTION : z.config.URL.TEAM_SETTINGS.STAGING;
+        return isProduction ? z.config.URL.TEAM_SETTINGS.PRODUCTION : z.config.URL.TEAM_SETTINGS.STAGING;
       case TYPE.WEBAPP:
-        return is_production ? z.config.URL.WEBAPP.PRODUCTION : z.config.URL.WEBAPP.STAGING;
+        return isProduction ? z.config.URL.WEBAPP.PRODUCTION : z.config.URL.WEBAPP.STAGING;
       case TYPE.WEBSITE:
-        return is_production ? z.config.URL.WEBSITE.PRODUCTION : z.config.URL.WEBSITE.STAGING;
+        return isProduction ? z.config.URL.WEBSITE.PRODUCTION : z.config.URL.WEBSITE.STAGING;
       default:
         throw new Error('Unknown URL type');
     }

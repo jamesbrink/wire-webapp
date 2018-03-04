@@ -249,7 +249,7 @@ class GoogleFeedFetcher(Browser):
     look_for = "Feedfetcher-Google"
     bot = True
 
-    def get_version(self, agent):
+    def getVersion(self, agent):
         pass
 
 class RunscopeRadar(Browser):
@@ -260,14 +260,14 @@ class GoogleAppEngine(Browser):
     look_for = "AppEngine-Google"
     bot = True
 
-    def get_version(self, agent):
+    def getVersion(self, agent):
         pass
 
 class GoogleApps(Browser):
     look_for = "GoogleApps script"
     bot = True
 
-    def get_version(self, agent):
+    def getVersion(self, agent):
         pass
 
 class TwitterBot(Browser):
