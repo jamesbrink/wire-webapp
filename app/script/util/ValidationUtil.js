@@ -27,7 +27,7 @@ z.util.ValidationUtil = {
   // ToDo: Move z.util.is_valid_phone_number here
   // ToDo: Move z.util.is_iso_string here
   // ToDo: Move z.util.is_valid_email here
-  // ToDo: Move z.util.is_same_location here
+  // ToDo: Move z.util.isSameLocation here
   asset: {
     legacy: (asset_id, conversation_id) => {
       if (!z.util.ValidationUtil.is_UUID(asset_id) || !z.util.ValidationUtil.is_UUID(conversation_id)) {

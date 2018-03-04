@@ -4454,65 +4454,65 @@ describe('z.util.format_milliseconds_short', () => {
   });
 });
 
-describe('z.util.is_same_location', () => {
+describe('z.util.isSameLocation', () => {
   it('returns false if page was accessed directly', () => {
-    expect(z.util.is_same_location('', 'https://app.wire.com')).toBeFalsy();
+    expect(z.util.isSameLocation('', 'https://app.wire.com')).toBeFalsy();
   });
 
   it('returns false if page was accessed from https://wire.com', () => {
-    expect(z.util.is_same_location('https://wire.com', 'https://app.wire.com')).toBeFalsy();
+    expect(z.util.isSameLocation('https://wire.com', 'https://app.wire.com')).toBeFalsy();
   });
 
   it('returns false if page was accessed from https://wire.com/download', () => {
-    expect(z.util.is_same_location('https://wire.com/download', 'https://app.wire.com')).toBeFalsy();
+    expect(z.util.isSameLocation('https://wire.com/download', 'https://app.wire.com')).toBeFalsy();
   });
 
   it('returns false if page was accessed from https://get.wire.com', () => {
-    expect(z.util.is_same_location('https://get.wire.com', 'https://app.wire.com')).toBeFalsy();
+    expect(z.util.isSameLocation('https://get.wire.com', 'https://app.wire.com')).toBeFalsy();
   });
 
   it('returns false if page was accessed from an external link', () => {
-    expect(z.util.is_same_location('http://www.heise.de', 'https://app.wire.com')).toBeFalsy();
+    expect(z.util.isSameLocation('http://www.heise.de', 'https://app.wire.com')).toBeFalsy();
   });
 
   it('returns false if redirected from auth', () => {
-    expect(z.util.is_same_location('https://app.wire.com/auth', 'https://app.wire.com')).toBeFalsy();
+    expect(z.util.isSameLocation('https://app.wire.com/auth', 'https://app.wire.com')).toBeFalsy();
   });
 
   it('returns false if redirected from auth with parameter', () => {
     expect(
-      z.util.is_same_location('https://app.wire.com/auth/?env=staging', 'https://app.wire.com/?env=staging')
+      z.util.isSameLocation('https://app.wire.com/auth/?env=staging', 'https://app.wire.com/?env=staging')
     ).toBeFalsy();
   });
 
   it('returns false if redirected from auth with history hashtag', () => {
     expect(
-      z.util.is_same_location('https://app.wire.com/auth/#history', 'https://app.wire.com/?env=staging')
+      z.util.isSameLocation('https://app.wire.com/auth/#history', 'https://app.wire.com/?env=staging')
     ).toBeFalsy();
   });
 
   it('returns false if redirected from auth with login hashtag', () => {
     expect(
-      z.util.is_same_location('https://app.wire.com/auth/?env=staging#login', 'https://app.wire.com/?env=staging')
+      z.util.isSameLocation('https://app.wire.com/auth/?env=staging#login', 'https://app.wire.com/?env=staging')
     ).toBeFalsy();
   });
 
   it('returns false if redirected from auth with registration hashtag', () => {
     expect(
-      z.util.is_same_location('https://app.wire.com/auth/?env=staging#register', 'https://app.wire.com/?env=staging')
+      z.util.isSameLocation('https://app.wire.com/auth/?env=staging#register', 'https://app.wire.com/?env=staging')
     ).toBeFalsy();
   });
 
   it('returns true if auth with login hashtag was reloaded', () => {
-    expect(z.util.is_same_location('https://app.wire.com/auth/#register', 'https://app.wire.com/auth/')).toBeFalsy();
+    expect(z.util.isSameLocation('https://app.wire.com/auth/#register', 'https://app.wire.com/auth/')).toBeFalsy();
   });
 
   it('returns true if page was reloaded', () => {
-    expect(z.util.is_same_location('https://app.wire.com', 'https://app.wire.com')).toBeTruthy();
+    expect(z.util.isSameLocation('https://app.wire.com', 'https://app.wire.com')).toBeTruthy();
   });
 
   it('returns true if page was reloaded with parameters', () => {
-    expect(z.util.is_same_location('https://app.wire.com/?hl=de', 'https://app.wire.com/?hl=de')).toBeTruthy();
+    expect(z.util.isSameLocation('https://app.wire.com/?hl=de', 'https://app.wire.com/?hl=de')).toBeTruthy();
   });
 });
 

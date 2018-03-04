@@ -140,7 +140,7 @@ z.viewModel.ListViewModel = class ListViewModel {
     const active_conversation_item = is_connection_request_state
       ? z.viewModel.ContentViewModel.STATE.CONNECTION_REQUESTS
       : this.conversation_repository.active_conversation();
-    const next_conversation_item = z.util.ArrayUtil.iterate_item(
+    const next_conversation_item = z.util.ArrayUtil.iterateItem(
       this.visible_list_items(),
       active_conversation_item,
       reverse
@@ -160,7 +160,7 @@ z.viewModel.ListViewModel = class ListViewModel {
       active_preference = z.viewModel.ContentViewModel.STATE.DEVICES;
     }
 
-    const next_preference = z.util.ArrayUtil.iterate_item(this.visible_list_items(), active_preference, reverse);
+    const next_preference = z.util.ArrayUtil.iterateItem(this.visible_list_items(), active_preference, reverse);
 
     if (next_preference) {
       this.content_view_model.switchContent(next_preference);

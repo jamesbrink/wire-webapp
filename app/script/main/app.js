@@ -236,7 +236,7 @@ z.main.App = class App {
    */
   init_app(is_reload = this._is_reload()) {
     z.util
-      .check_indexed_db()
+      .checkIndexedDb()
       .then(() => this._check_single_instance())
       .then(() => this._load_access_token())
       .then(() => {
@@ -519,7 +519,7 @@ z.main.App = class App {
    * @returns {boolean}  True if it is a page refresh
    */
   _is_reload() {
-    const is_reload = z.util.is_same_location(document.referrer, window.location.href);
+    const is_reload = z.util.isSameLocation(document.referrer, window.location.href);
     this.logger.debug(
       `App reload: '${is_reload}', Document referrer: '${document.referrer}', Location: '${window.location.href}'`
     );

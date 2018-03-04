@@ -22,7 +22,7 @@
 window.z = window.z || {};
 window.z.util = z.util || {};
 
-z.util.check_indexed_db = function() {
+z.util.checkIndexedDb = function() {
   if (!z.util.Environment.browser.supports.indexed_db) {
     if (z.util.Environment.browser.edge) {
       return Promise.reject(new z.auth.AuthError(z.auth.AuthError.TYPE.PRIVATE_MODE));
@@ -69,28 +69,28 @@ z.util.check_indexed_db = function() {
   return Promise.resolve();
 };
 
-z.util.dummy_image = function(width, height) {
+z.util.dummyImage = function(width, height) {
   return `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${width} ${height}' width='${width}' height='${height}'></svg>`;
 };
 
-z.util.is_same_location = function(past_location, current_location) {
-  return past_location !== '' && current_location.startsWith(past_location);
+z.util.isSameLocation = function(pastLocation, currentLocation) {
+  return pastLocation !== '' && currentLocation.startsWith(pastLocation);
 };
 
-z.util.load_image = function(blob) {
+z.util.loadImage = function(blob) {
   return new Promise((resolve, reject) => {
-    const object_url = window.URL.createObjectURL(blob);
+    const objectUrl = window.URL.createObjectURL(blob);
     const img = new Image();
     img.onload = function() {
       resolve(this);
-      return window.URL.revokeObjectURL(object_url);
+      return window.URL.revokeObjectURL(objectUrl);
     };
     img.onerror = reject;
-    img.src = object_url;
+    img.src = objectUrl;
   });
 };
 
-z.util.load_data_url = function(file) {
+z.util.loadDataURL = function(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = function() {
@@ -101,18 +101,7 @@ z.util.load_data_url = function(file) {
   });
 };
 
-z.util.load_file_buffer = function(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = function() {
-      return resolve(this.result);
-    };
-    reader.onerror = reject;
-    reader.readAsArrayBuffer(file);
-  });
-};
-
-z.util.load_url_buffer = (url, xhrAccessorFunction) => {
+z.util.loadURLBuffer = (url, xhrAccessorFunction) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -133,7 +122,7 @@ z.util.load_url_buffer = (url, xhrAccessorFunction) => {
 };
 
 z.util.load_url_blob = url => {
-  return z.util.load_url_buffer(url).then(({buffer, mimeType}) => new Blob([new Uint8Array(buffer)], {type: mimeType}));
+  return z.util.loadURLBuffer(url).then(({buffer, mimeType}) => new Blob([new Uint8Array(buffer)], {type: mimeType}));
 };
 
 z.util.append_url_parameter = function(url, parameter) {

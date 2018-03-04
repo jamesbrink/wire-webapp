@@ -266,7 +266,7 @@ z.assets.AssetService = class AssetService {
       })
       .then(compressedBytes => {
         return z.util
-          .load_image(new Blob([compressedBytes], {type: image.type}))
+          .loadImage(new Blob([compressedBytes], {type: image.type}))
           .then(compressedImage => ({compressedBytes, compressedImage}));
       });
   }

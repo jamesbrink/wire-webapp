@@ -236,7 +236,7 @@ z.viewModel.AuthViewModel = class AuthViewModel {
     this._init_page();
 
     // Select country based on location of user IP
-    this.country_code((z.util.CountryCodes.get_country_code($('[name=geoip]').attr('country')) || 1).toString());
+    this.country_code((z.util.CountryCodes.getCountryCode($('[name=geoip]').attr('country')) || 1).toString());
     this.changed_country_code();
 
     this.audio_repository.init();
@@ -350,7 +350,7 @@ z.viewModel.AuthViewModel = class AuthViewModel {
    */
   _check_database(current_hash) {
     return z.util
-      .check_indexed_db()
+      .checkIndexedDb()
       .then(() => {
         if (current_hash === z.auth.AuthView.MODE.BLOCKED_DATABASE) {
           this._set_hash();
@@ -764,7 +764,7 @@ z.viewModel.AuthViewModel = class AuthViewModel {
     this.clear_error(z.auth.AuthView.TYPE.PHONE);
 
     const country = event ? event.currentTarget.value || undefined : this.country();
-    this.country_code(`+${z.util.CountryCodes.get_country_code(country)}`);
+    this.country_code(`+${z.util.CountryCodes.getCountryCode(country)}`);
     $('#wire-login-phone').focus();
   }
 
@@ -776,7 +776,7 @@ z.viewModel.AuthViewModel = class AuthViewModel {
 
     if (country_code) {
       this.country_code(`+${country_code}`);
-      country_iso = z.util.CountryCodes.get_country_by_code(country_code) || 'X1';
+      country_iso = z.util.CountryCodes.getCountryByCode(country_code) || 'X1';
     } else {
       this.country_code('');
       country_iso = 'X0';

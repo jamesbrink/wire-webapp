@@ -44,40 +44,40 @@ window.z.util = z.util || {};
  */
 
 $.fn.confirm = function(config) {
-  const template_html = $(config.template).html();
+  const templateHtml = $(config.template).html();
   const parent = $(this);
-  parent.append(template_html);
+  parent.append(templateHtml);
 
   const confirm = parent.find('.confirm');
   const group = parent.find('.participants-group');
-  let is_visible = true;
+  let isVisible = true;
 
-  const is_small = group.hasClass('small');
-  if (is_small) {
+  const isSmall = group.hasClass('small');
+  if (isSmall) {
     group.removeClass('small');
   }
 
   ko.applyBindings(config.data, confirm[0]);
 
   if (config.data && config.data.user) {
-    const stripped_user_name = config.data.user.first_name();
-    parent.find('.user').html(z.util.escape_html(stripped_user_name));
+    const strippedUserName = config.data.user.first_name();
+    parent.find('.user').html(z.util.escape_html(strippedUserName));
   }
 
   window.requestAnimationFrame(() => confirm.addClass('confirm-is-visible'));
 
   this.destroy = function() {
-    is_visible = false;
+    isVisible = false;
     ko.cleanNode(confirm[0]);
 
-    if (is_small) {
+    if (isSmall) {
       group.addClass('small');
     }
 
     parent.find('.confirm').remove();
   };
 
-  this.is_visible = () => is_visible;
+  this.isVisible = () => isVisible;
 
   $('[data-action="cancel"]', confirm).click(() => {
     if (typeof config.cancel === 'function') {
